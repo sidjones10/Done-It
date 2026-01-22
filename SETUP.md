@@ -83,6 +83,43 @@ npm install
 npm install @react-native-async-storage/async-storage
 ```
 
+#### 5. Windows: ENOENT Error with node:sea (CRITICAL FIX)
+If you see this error on Windows:
+```
+Error: ENOENT: no such file or directory, mkdir '...\\.expo\\metro\\externals\\node:sea'
+```
+
+**Solution 1 - Use the clean start script (Recommended)**:
+```bash
+npm run start:clean
+```
+
+**Solution 2 - Manually delete .expo directory**:
+```bash
+# PowerShell
+Remove-Item -Recurse -Force .expo
+
+# Command Prompt
+rmdir /s /q .expo
+
+# Then start normally
+npm start
+```
+
+**Solution 3 - Update Expo (if issue persists)**:
+```bash
+# Update to latest Expo version
+npm install expo@latest
+
+# Clear everything and reinstall
+npm cache clean --force
+rm -rf node_modules .expo
+npm install
+npm start
+```
+
+**Note**: The metro.config.js file in the project has been configured to handle this Windows-specific issue automatically.
+
 ## Building for Production
 
 ### iOS Build (requires Apple Developer account)

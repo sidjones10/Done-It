@@ -78,6 +78,36 @@ npm start
    - Scan the QR code shown in the terminal
    - Or press `i` for iOS simulator or `a` for Android emulator
 
+## ⚠️ Windows Users: IMPORTANT!
+
+If you encounter this error on Windows:
+```
+Error: ENOENT: no such file or directory, mkdir '...\\.expo\\metro\\externals\\node:sea'
+```
+
+**Quick Fix:**
+```bash
+# Run the included clean script
+clean-expo.bat
+
+# Or use PowerShell
+.\clean-expo.ps1
+
+# Then start with clean cache
+npm run start:clean
+```
+
+**Alternative Manual Fix:**
+```bash
+# Delete .expo directory
+rmdir /s /q .expo
+
+# Start with clean cache
+npm start
+```
+
+The project includes a `metro.config.js` that handles this Windows-specific issue, but you may need to clean the cache first.
+
 ## Project Structure
 
 ```
